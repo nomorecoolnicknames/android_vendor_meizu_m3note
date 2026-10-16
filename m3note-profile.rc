@@ -15,8 +15,8 @@
 #
 # Each line puts an L681H file (profile-l681.mk) over the m681 file of the
 # same name.  /vendor stays read-only; a bind mount does not write to it.
-# Keep this list and the /vendor/meizu/l681 lines of profile-l681.mk in step
-# (tools/check_profile_rc.sh does that statically).  Executables (bin/) are not
+# Keep this list and the /vendor/meizu/l681 lines of profile-l681.mk in step.
+# Executables (bin/) are not
 # bound: AOSP forbids mounton on exec_type files (domain.te:497), so the l681
 # msensord is started from /vendor/meizu/l681/bin by its service
 # (device/meizu/m3note rootdir/m3note-sensors.rc).

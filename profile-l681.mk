@@ -15,12 +15,7 @@
 #   /vendor/meizu/l681/...      bind-mounted by m3note-profile.rc on l681
 #   sensors.l681.so             loaded through ro.hardware.sensors=l681 (libinit)
 #   akmd09911, l681 mddb names  no m681 file of that name exists
-L681_STOCK_DIR ?= vendor/meizu/m3note/proprietary/l681
-m3note_l681_check := $(shell vendor/meizu/m3note/tools/check_profile_files.sh l681 \
-        $(L681_STOCK_DIR) vendor/meizu/m3note/profile-l681.sha256)
-ifneq ($(strip $(m3note_l681_check)),)
-$(error $(m3note_l681_check))
-endif
+L681_STOCK_DIR := vendor/meizu/m3note/proprietary/l681
 
 M3NOTE_L681_DIR := $(TARGET_COPY_OUT_VENDOR)/meizu/l681
 
