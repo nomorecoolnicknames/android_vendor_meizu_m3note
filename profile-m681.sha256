@@ -1,0 +1,24 @@
+# profile-m681.sha256 — the m681 files that have an l681 counterpart under the
+# same name (or are m681-only), taken from vendor/meizu/m681/proprietary
+# (LOS16 vendor a6b74a0, the set the A9 m681 daily ran with:
+# lineage_m681 16.0-20260824).
+# These are what /vendor/firmware, /vendor/etc/mddb, /vendor/bin and
+# /vendor/lib*/hw hold on BOTH revisions; on l681 the files of profile-l681
+# are bind-mounted over the same-name ones (m3note-profile.rc).
+# Hashes computed 2026-10-05 from the LOS16 vendor/meizu/m681/proprietary.
+# Format: sha256sum output, path relative to vendor/meizu/m681/proprietary.
+aee2b9998e481a6c7415fc2de54922fb07127c449b00315684245e8663c48acc  vendor/firmware/modem_1_ulwctg_n.img
+e8fd90bb3504f6102a97d10fdd832d1fe18aa5de7f54de19ffa4cf64e11cc8ba  vendor/firmware/dsp_1_ulwctg_n.bin
+d4b048e4ba5452fb480656a13437b850ac79ef1fba477aa5de8873f0aa3bb962  vendor/firmware/boot_3_3g_n.rom
+7809ef2f0880289b47083945fe5d58264f05d4cac696245453f4e977cab7f709  vendor/firmware/modem_3_3g_n.img
+b98ca27041592e795cf3cb6b5c1fd7fe2fd0738e2028c0f77bcbf4966b131340  vendor/firmware/catcher_filter_1_ulwctg_n.bin
+367a18803e6aa1476ed27069687e98d1d95390cee357614206ab78d24ceb5b8d  vendor/firmware/catcher_filter_3_3g_n.bin
+bc554030df6beeb61af3b1b422555bb602beded4e86aa3ee919af0a12730a9b7  vendor/firmware/em_filter_1_ulwctg_n.bin
+7af862cabb85a2ba80cd6ccf477fd414d9e9d85542bf896c2fa3c45867056176  vendor/firmware/ROMv2_lm_patch_1_0_hdr.bin
+3dc8d0f6bad90999e5dcc34cfaa76fefbff69d981bb2b7bd1cd79103caf40a16  vendor/firmware/ROMv2_lm_patch_1_1_hdr.bin
+034f4ca6648c07cb400267663dd505a680ec54b48c4fd0523f645289cdaa11c8  vendor/etc/mddb/mdm_layout_desc_1_ulwctg_n.dat
+c3a03e3f661e005c44b6d7ac5e8cecb70c15400b3bcac87ffa27232b9a0364ff  vendor/lib64/hw/sensors.mt6755.so
+dae00471f03917ce292f1b13f3aa6d8e68967e21bb4df5dc051138f1e61cbf8f  vendor/bin/msensord
+50d89cbda7c2c74adea9e0cd352983ad2dfcebcab4583e775aa3ff127b54fdaa  vendor/lib/hw/libMcTeeKeymaster.so
+1f57856f0184cfbeafa39fff19d2af09725067f7f1cb786f024cc16fbb1e7034  vendor/lib64/hw/libMcTeeKeymaster.so
+22ad98fcde90e7471f0f0e0f230ee4d272137a22cbf12acfed79737997abfdcd  vendor/firmware/WIFI_RAM_CODE_6755

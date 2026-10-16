@@ -1,0 +1,36 @@
+# m3note-profile.rc — runtime activation of the l681 vendor profile.
+#
+# ro.vendor.meizu.profile is set by libinit (device/meizu/m3note/libinit) from
+# the device-tree compatible ("meizu,m681" / "meizu,l681") during
+# load_system_props in "on post-fs", i.e. after mount_all.
+# The actions are tied to the late-fs EVENT with a property condition, not to
+# a bare property trigger: Pie queues a property change behind every event
+# late-init has already queued (late-fs ... early-boot, boot), so a bare
+# "on property:" would run only after "on boot" -- after class core
+# (ccci_mdinit, ccci_fsd) has started.  "late-fs && property:" is evaluated
+# when late-fs is dequeued (system/core/init/action.cpp CheckEvent), with the
+# property already set, i.e. before post-fs-data and before any class starts:
+# before ccci_mdinit (modem), wmt_loader/wmt_launcher and the sensors HAL open
+# any of these files.
+#
+# Each line puts an L681H file (profile-l681.mk) over the m681 file of the
+# same name.  /vendor stays read-only; a bind mount does not write to it.
+# Keep this list and the /vendor/meizu/l681 lines of profile-l681.mk in step
+# (tools/check_profile_rc.sh does that statically).  Executables (bin/) are not
+# bound: AOSP forbids mounton on exec_type files (domain.te:497), so the l681
+# msensord is started from /vendor/meizu/l681/bin by its service
+# (device/meizu/m3note rootdir/m3note-sensors.rc).
+on late-fs && property:ro.vendor.meizu.profile=l681
+    mount none /vendor/meizu/l681/firmware/modem_1_ulwctg_n.img /vendor/firmware/modem_1_ulwctg_n.img bind
+    mount none /vendor/meizu/l681/firmware/dsp_1_ulwctg_n.bin /vendor/firmware/dsp_1_ulwctg_n.bin bind
+    mount none /vendor/meizu/l681/firmware/modem_3_3g_n.img /vendor/firmware/modem_3_3g_n.img bind
+    mount none /vendor/meizu/l681/firmware/catcher_filter_1_ulwctg_n.bin /vendor/firmware/catcher_filter_1_ulwctg_n.bin bind
+    mount none /vendor/meizu/l681/firmware/catcher_filter_3_3g_n.bin /vendor/firmware/catcher_filter_3_3g_n.bin bind
+    mount none /vendor/meizu/l681/firmware/em_filter_1_ulwctg_n.bin /vendor/firmware/em_filter_1_ulwctg_n.bin bind
+    mount none /vendor/meizu/l681/firmware/ROMv2_lm_patch_1_0_hdr.bin /vendor/firmware/ROMv2_lm_patch_1_0_hdr.bin bind
+    mount none /vendor/meizu/l681/firmware/ROMv2_lm_patch_1_1_hdr.bin /vendor/firmware/ROMv2_lm_patch_1_1_hdr.bin bind
+    mount none /vendor/meizu/l681/etc/mddb/mdm_layout_desc_1_ulwctg_n.dat /vendor/etc/mddb/mdm_layout_desc_1_ulwctg_n.dat bind
+    setprop vendor.meizu.profile.applied l681
+
+on late-fs && property:ro.vendor.meizu.profile=m681
+    setprop vendor.meizu.profile.applied m681
